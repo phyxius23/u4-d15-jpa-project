@@ -1,6 +1,7 @@
 package app;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -70,12 +71,12 @@ public class Application {
 		User user6 = new User("Lucia", "Rossi", LocalDate.of(2010, 5, 25));
 
 		// ********** SAVE USERS NEL DB **********
-		ud.save(user1);
-		ud.save(user2);
-		ud.save(user3);
-		ud.save(user4);
-		ud.save(user5);
-		ud.save(user6);
+		//		ud.save(user1);
+		//		ud.save(user2);
+		//		ud.save(user3);
+		//		ud.save(user4);
+		//		ud.save(user5);
+		//		ud.save(user6);
 
 		// **********  CREAZIONE LOANS  **********
 		Loan loan1 = new Loan(user1, magazine5, LocalDate.now(), LocalDate.now(), null);
@@ -89,15 +90,34 @@ public class Application {
 		Loan loan6 = new Loan(user6, book1, LocalDate.of(2023, 1, 29), LocalDate.of(2023, 1, 29), null);
 
 		// ********** SAVE LOANS NEL DB **********
-		ld.save(loan1);
-		ld.save(loan2);
-		ld.save(loan3);
-		ld.save(loan4);
-		ld.save(loan5);
-		ld.save(loan6);
+		//		ld.save(loan1);
+		//		ld.save(loan2);
+		//		ld.save(loan3);
+		//		ld.save(loan4);
+		//		ld.save(loan5);
+		//		ld.save(loan6);
 
-		// **********  SEARCH ISBN  **********
-		//log.info("SEARCH ISBN: " + sd.getByISBN(18));
+		// **********  SEARCH BY TITLE  **********
+		log.info("BOOK SEARCH TITLE: " + sd.getByTitle("Fairy").toString());
+
+		// **********  SEARCH BY ISBN  **********
+		log.info("SEARCH ISBN: " + sd.getByISBN(UUID.fromString("630ad0e2-68f8-4cf8-9f9a-f504b0a505c8")));
+
+		// **********  SEARCH BY AUTHOR  **********
+		log.info("BOOK SEARCH AUTHOR: " + sd.getByAuthor("Paolo Roversi").toString());
+
+		// **********  DELETE BY UUID **********
+		//sd.delete("560a36a2-accc-4894-b594-2b1f4395840a"); // => non funziona perchè non riesce a leggere il tipo inserito 
+		sd.delete(UUID.fromString("560a36a2-accc-4894-b594-2b1f4395840a"));
+
+		// **********  SEARCH BY YEAR  **********
+		log.info("BOOK SEARCH YEAR: " + sd.getByYear(2023).toString());
+
+		// **********  SEARCH EXPIRED LOAN  **********
+		log.info("SEARCH EXPIRED LOAN: " + ld.getExpiredLoan().toString());
+
+		// **********  SEARCH ON LOAN  **********
+		log.info("SEARCH ON LOAN: " + ld.getByCardNumber(UUID.fromString("8ffeed9c-a358-43bf-9886-55849897fa54")));
 
 		em.close();
 		emf.close();

@@ -48,8 +48,8 @@ public abstract class Script {
 
 	@Override
 	public String toString() {
-		return "Script [ISBN=" + this.ISBN + ", titolo=" + this.title + ", anno di pubblicazione=" + this.publicationYear
-				+ ", numero di pagine=" + this.numberOfPages + "]";
+		return "Script [ISBN=" + ISBN + ", titolo=" + title + ", anno di pubblicazione=" + publicationYear
+				+ ", numero di pagine=" + numberOfPages + "]";
 	}
 
 }

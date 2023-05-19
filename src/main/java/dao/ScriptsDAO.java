@@ -68,7 +68,7 @@ public class ScriptsDAO {
 	// SEARCH BY AUTHOR - (GET BY AUTHOR)
 	public List<Book> getByAuthor(String author) {
 		TypedQuery<Book> query = em.createNamedQuery("searchByAuthor", Book.class);
-		query.setParameter("title", author);
+		query.setParameter("author", author);
 		return query.getResultList();
 	}
 
