@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
+import entities.Loan;
 import entities.Script;
 import lombok.extern.slf4j.Slf4j;
 
@@ -18,15 +19,14 @@ public class LoansDAO {
 
 	// Costruttore
 	public LoansDAO(EntityManager em) {
-		super();
 		this.em = em;
 	}
 
 	// SAVE 
-	public void save(Script s) {
+	public void save(Loan l) {
 		EntityTransaction transaction = em.getTransaction();
 		transaction.begin();
-		em.persist(s);
+		em.persist(l);
 		transaction.commit();
 		log.info("Prestito salvato.");
 	}

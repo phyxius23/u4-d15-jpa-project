@@ -3,10 +3,10 @@ package entities;
 import java.time.LocalDate;
 import java.util.UUID;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -31,12 +31,12 @@ public class Loan {
 	@GeneratedValue
 	private UUID id;
 
-	@ManyToOne
-	@JoinColumn(name = "script_cardnumber")
+	@ManyToOne(cascade = CascadeType.ALL)
+	//@JoinColumn(name = "script_cardnumber")
 	private User users;
 
-	@ManyToOne
-	@JoinColumn(name = "script_id")
+	@ManyToOne(cascade = CascadeType.ALL)
+	//@JoinColumn(name = "script_id")
 	private Script loanScript;
 
 	private LocalDate loanStartDate;

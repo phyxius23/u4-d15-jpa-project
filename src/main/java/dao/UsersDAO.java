@@ -3,7 +3,7 @@ package dao;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
-import entities.Script;
+import entities.User;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -18,7 +18,7 @@ public class UsersDAO {
 	}
 
 	// SAVE
-	public void save(Script s) {
+	public void save(User s) {
 		EntityTransaction transaction = em.getTransaction();
 		transaction.begin();
 		em.persist(s);

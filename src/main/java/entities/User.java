@@ -1,13 +1,11 @@
 package entities;
 
 import java.time.LocalDate;
-import java.util.Set;
 import java.util.UUID;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.Getter;
@@ -30,8 +28,8 @@ public class User {
 	private String surname;
 	private LocalDate birthday;
 
-	@OneToMany(mappedBy = "users")
-	private Set<Loan> loans;
+	//	@OneToMany(mappedBy = "users")
+	//	private Set<Loan> loans;
 
 	// Costruttore
 	public User(String name, String surname, LocalDate birthday) {
