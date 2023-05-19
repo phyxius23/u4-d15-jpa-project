@@ -1,17 +1,17 @@
 package entities;
 
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.Table;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-//@Table(name = "magazines")
-@DiscriminatorValue("Magazine") // => opzionale
+@Table(name = "magazines")
+//@DiscriminatorValue("Magazine") // => opzionale
 @Getter
 @Setter
 @NoArgsConstructor

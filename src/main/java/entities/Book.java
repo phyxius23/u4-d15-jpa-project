@@ -1,19 +1,21 @@
 package entities;
 
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-//@Table(name = "books")
-@DiscriminatorValue("Book") // => opzionale
+@Table(name = "books")
+//@DiscriminatorValue("Book") // => opzionale
 @Getter
 @Setter
 @NoArgsConstructor
 //@ToString
+@NamedQuery(name = "searchByAuthor", query = "SELECT b FROM Book b WHERE b.author = :author")
 public class Book extends Script {
 
 	// Attributi

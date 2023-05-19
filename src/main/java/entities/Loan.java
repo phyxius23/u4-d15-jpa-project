@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 import lombok.Getter;
@@ -17,6 +18,8 @@ import lombok.ToString;
 
 @Entity
 @Table(name = "loans")
+@NamedQuery(name = "searchOnLoan", query = "SELECT l.loanScript FROM Loan l JOIN l.users lu WHERE lu.cardNumber = :cardNumber AND l.loanEndDate is NULL")
+@NamedQuery(name = "searchExpiredLoan", query = "SELECT l.loanScript FROM Loan l WHERE l.defaultLoanEndDate < CURRENT_DATE AND l.loanEndDate IS NULL")
 @Getter
 @Setter
 @NoArgsConstructor
